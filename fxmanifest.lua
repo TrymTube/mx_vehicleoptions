@@ -3,18 +3,17 @@ game 'gta5'
 
 author 'Max'
 description 'easy way to change your vehicle appearance'
-version '0.1'
+version '1.1.0'
 
 lua54 'on'
 
 shared_script {
 	'@es_extended/imports.lua',
-	'@es_extended/locale.lua',
 	'config.lua'
 }
 
 client_scripts {
-	'@NativeUI/NativeUI.lua',
+	'NativeUI.lua',
 	'client/*.lua'
 }
 
