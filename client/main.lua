@@ -3,10 +3,12 @@ _menuPool = NativeUI.CreatePool()
 RegisterKeyMapping('vehicleOptions', 'Open Vehicle Options', 'keyboard', Config.StandardKey)
 
 RegisterCommand('vehicleOptions', function(source, args, Rawcommand)
-    if Config.JobRestricted then
-        checkJob()
-    else
-        checkJob()
+    if not _menuPool:IsAnyMenuOpen() then
+        if Config.JobRestricted then
+            checkJob()
+        else
+            OpenMenu()
+        end
     end
 end)
 
@@ -84,12 +86,12 @@ function OpenMenu()
     end
     
     local size = {}
+    local currIndex
     local currLivery = GetVehicleLivery(vehicle)
     local liveries = GetVehicleLiveryCount(vehicle)
 
     local livery = _menuPool:AddSubMenu(mainMenu, 'Livery', 'Change your Vehicle appearance')
   
-
     for i = 1, liveries do
         table.insert(size, i)
     end
